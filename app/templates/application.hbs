@@ -1,4 +1,14 @@
 {{#let (changeset (hash firstName="")) as |changesetObj|}}
   {{log changesetObj}}
   {{changesetObj.firstName}}
+  <h1>
+    Write, erase then try to write again
+  </h1>
+  <Input
+    @id="user-question"
+    @type="text"
+    @value={{changesetObj.firstName}}
+    {{on "input" (pick "target.value" (changeset-set changesetObj "firstName"))
+    }}
+  />
 {{/let}}
